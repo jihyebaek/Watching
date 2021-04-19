@@ -17,7 +17,7 @@ public interface MemberDAO {
 	// 로그아웃
 	public void memberLogout(HttpSession session) throws Exception;
 
-	//
+	// 회원 정보
 	public MemberDTO memberDetail(String mId) throws Exception;
 
 	//

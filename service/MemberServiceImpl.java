@@ -55,10 +55,19 @@ public class MemberServiceImpl implements MemberService {
 		session.invalidate();
 	}
 	
-	// 회원정보 보기
+	// 회원정보
 	@Override
 	public MemberDTO memberDetail(String mId) throws Exception {
-		return dao.memberDetail(mId);
+			
+		MemberDTO mdto = null;
+		
+		try {
+			mdto = dao.memberDetail(mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return mdto;
 	}
 
 	// 회원정보 수정
@@ -118,6 +127,5 @@ public class MemberServiceImpl implements MemberService {
 	public int idCheck(String mId) throws Exception {
 		return dao.idCheck(mId);
 	}
-
 
 }

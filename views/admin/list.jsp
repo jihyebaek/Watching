@@ -122,6 +122,7 @@ a:hover{
 	});
 </script>
 <body>
+
 <%@include file="../template/adminTop.jsp"%>
 	
 	

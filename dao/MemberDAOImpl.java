@@ -38,9 +38,14 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 	
+	// 회원정보
 	@Override
 	public MemberDTO memberDetail(String mId) throws Exception {
-		return sqlSession.selectOne(nameSpace + ".memberDetail", mId);
+		
+		MemberDTO mdto = sqlSession.selectOne(nameSpace + ".memberDetail", mId);
+		
+		return mdto;
+			
 	}
 
 	@Override

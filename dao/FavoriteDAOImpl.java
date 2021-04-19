@@ -31,6 +31,13 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 		
 	}
 
+	// 찜추가 중복체크
+	@Override
+	public int favCheck(int pCode) throws Exception {
+		
+		return sql.selectOne(namespace+".favCheck", pCode);
+	}
+	
 	// 찜삭제
 	@Override
 	public void deletefav(int fCode) throws Exception {

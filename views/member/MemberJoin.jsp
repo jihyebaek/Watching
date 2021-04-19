@@ -199,7 +199,7 @@ td, th {
 	 	getPwCheck.focus(); 
 	 		return false; 
 	 		} else if ((mPw.slice(0, pwCheck.length) == mId.slice(0, mId.length))) { //password랑 id 다른지 확인 
-	 			alert("비밀번호와 id가 동일합니다."); 
+	 			alert("아이디와 비밀번호가 동일합니다. 비밀번호를 재설정해주세요."); 
 	 		getmPw.value = ""; 
 	 		getPwCheck.value = ""; 
 	 		getmPw.focus(); 

@@ -16,13 +16,13 @@ html, body {
   width: 100%; height: 100%;
   font-family: Verdana, sans-serif;
 }
+ul li {
+  display:inline-block; argin:5px;
+}
 main.container-fluid {
   min-height: 100%;
 }
-ul li {
-display:inline-block; 
-margin:5px;
-}
+
 li:nth-of-type(n+7) {
   display: none;
 }
@@ -38,6 +38,10 @@ a, a:link, a:visited {
 * {box-sizing: border-box;}
 .mySlides {display: none;}
 img {vertical-align: middle;}
+
+
+
+
 
 .slideshow-container {
   max-width: 1000px;
@@ -113,100 +117,105 @@ img {vertical-align: middle;}
 %>
 
 	<div id="container">
-	<h4>신작</h4>
 	
-	<div class="slideshow-container">
-
-		<div class="mySlides fade">
-		  <img src="/resources/ProductImg/국내드라마_빈센조_메인_포스터.JPG" style="width:1800px; height:400px;">
-		</div>
+		<h4>신작</h4>
 		
-		<div class="mySlides fade">
-		  <img src="/resources/ProductImg/국내드라마_나빌레라_메인_포스터2.JPG" style="width:1800px; height:400px;">
-		</div>
-		
-		<div class="mySlides fade">
-		  <img src="/resources/ProductImg/국내드라마_펜트하우스2_메인_포스터2.JPG" style="width:1800px; height:400px;">
-		</div>
-		
-		</div>
-		<br>
-		
-		<div style="text-align:center">
-		  <span class="dot"></span> 
-		  <span class="dot"></span> 
-		  <span class="dot"></span> 
-		</div>
-		
-		<script>
-		var slideIndex = 0;
-		showSlides();
-
-		function showSlides() {
-		    var i;
-		    var slides = document.getElementsByClassName("mySlides");
-		    var dots = document.getElementsByClassName("dot");
-		    for (i = 0; i < slides.length; i++) {
-		       slides[i].style.display = "none";  
-		    }
-		    slideIndex++;
-		    if (slideIndex > slides.length) {slideIndex = 1}    
-		    for (i = 0; i < dots.length; i++) {
-		        dots[i].className = dots[i].className.replace(" active", "");
-		    }
-		    slides[slideIndex-1].style.display = "block";  
-		    dots[slideIndex-1].className += " active";
-		    setTimeout(showSlides, 2000); // Change image every 2 seconds
-		}
-		</script>
+		<div class="slideshow-container">
 	
-	<div id="contents_list">
-	<h4>국내 드라마</h4>
-		<ul>
-		<c:forEach items="${dms_dramalist}" var="ddl" varStatus="status">
-		<li>
-			<div class="pImg"><a href="/vodplay"><img src="/resources/ProductImg/${ddl.pImg}" style="width:290px; height:200px;"></a></div>
-			<div class="pName"><a href="/vodplay">${ddl.pName}</a></div>
-		</li>
-		</c:forEach>
-	</ul>				
+			<div class="mySlides fade">
+			  <img src="/resources/ProductImg/국내드라마_빈센조_메인_포스터.JPG" style="width:1800px; height:400px;">
+			</div>
+			
+			<div class="mySlides fade">
+			  <img src="/resources/ProductImg/국내드라마_나빌레라_메인_포스터2.JPG" style="width:1800px; height:400px;">
+			</div>
+			
+			<div class="mySlides fade">
+			  <img src="/resources/ProductImg/국내드라마_펜트하우스2_메인_포스터2.JPG" style="width:1800px; height:400px;">
+			</div>
+			
+		</div>
+			<br>
+			
+			<div style="text-align:center">
+			  <span class="dot"></span> 
+			  <span class="dot"></span> 
+			  <span class="dot"></span> 
+			</div>
+			
+			<script>
+			var slideIndex = 0;
+			showSlides();
+	
+			function showSlides() {
+			    var i;
+			    var slides = document.getElementsByClassName("mySlides");
+			    var dots = document.getElementsByClassName("dot");
+			    for (i = 0; i < slides.length; i++) {
+			       slides[i].style.display = "none";  
+			    }
+			    slideIndex++;
+			    if (slideIndex > slides.length) {slideIndex = 1}    
+			    for (i = 0; i < dots.length; i++) {
+			        dots[i].className = dots[i].className.replace(" active", "");
+			    }
+			    slides[slideIndex-1].style.display = "block";  
+			    dots[slideIndex-1].className += " active";
+			    setTimeout(showSlides, 2000); // Change image every 2 seconds
+			}
+			</script>
+						
+			
+		<div class="cl_wrapper">
+		
+			<h4>국내 드라마</h4>
+			<ul>
+			<c:forEach items="${dms_dramalist}" var="ddl" varStatus="status">
+				<li>
+					<div class="pImg"><a href="/vodplay"><img src="/resources/ProductImg/${ddl.pImg}" style="width:290px; height:200px;"></a></div>
+					<div class="pName"><a href="/vodplay">${ddl.pName}</a></div>
+				</li>
+			</c:forEach>
+			</ul>
+			
+						
+			<h4>해외 드라마</h4>
+				<ul class="slider">
+				<c:forEach items="${abr_dramalist}" var="adl" varStatus="status">
+				<li>
+					<div class="pImg"><a href="/vodplay"><img src="/resources/ProductImg/${adl.pImg}" style="width:290px; height:200px;"></a></div>
+					<div class="pName"><a href="/vodplay">${adl.pName}</a></div>
+				</li>
+				</c:forEach>
+			</ul>				
 				
-	<h4>해외 드라마</h4>
-		<ul>
-		<c:forEach items="${abr_dramalist}" var="adl" varStatus="status">
-		<li>
-			<div class="pImg"><a href="/vodplay"><img src="/resources/ProductImg/${adl.pImg}" style="width:290px; height:200px;"></a></div>
-			<div class="pName"><a href="/vodplay">${adl.pName}</a></div>
-		</li>
-		</c:forEach>
-	</ul>				
-		
-	<h4>국내 영화</h4>
-		<ul>
-		<c:forEach items="${dms_filmlist}" var="dfl" varStatus="status">
-		<li>
-			<div class="pImg"><a href="/vodplay"><img src="/resources/ProductImg/${dfl.pImg}" style="width:290px; height:200px;"></a></div>
-			<div class="pName"><a href="/vodplay">${dfl.pName}</a></div>
-		</li>
-		</c:forEach>
-	</ul>				
-			
-			
-	<h4>해외 영화</h4>
-		<ul>
-		<c:forEach items="${abr_filmlist}" var="afl" varStatus="status">
-		<li>
-			<div class="pImg"><a href="/vodplay"><img src="/resources/ProductImg/${afl.pImg}" style="width:290px; height:200px;"></a></div>
-			<div class="pName"><a href="/vodplay">${afl.pName}</a></div>
-		</li>
-		</c:forEach>
-	</ul>				
-	</div>
+			<h4>국내 영화</h4>
+				<ul class="slider">
+				<c:forEach items="${dms_filmlist}" var="dfl" varStatus="status">
+				<li>
+					<div class="pImg"><a href="/vodplay"><img src="/resources/ProductImg/${dfl.pImg}" style="width:290px; height:200px;"></a></div>
+					<div class="pName"><a href="/vodplay">${dfl.pName}</a></div>
+				</li>
+				</c:forEach>
+			</ul>				
+					
+					
+			<h4>해외 영화</h4>
+				<ul class="slider">
+				<c:forEach items="${abr_filmlist}" var="afl" varStatus="status">
+				<li>
+					<div class="pImg"><a href="/vodplay"><img src="/resources/ProductImg/${afl.pImg}" style="width:290px; height:200px;"></a></div>
+					<div class="pName"><a href="/vodplay">${afl.pName}</a></div>
+				</li>
+				</c:forEach>
+			</ul>	
+						
+		</div>
 	
 	</div>
-
 
 </main>
+
 <%@include file="./template/bottom.jsp"%>
 	<%} %>
 

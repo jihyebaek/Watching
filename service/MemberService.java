@@ -17,7 +17,7 @@ public interface MemberService {
 	// 로그아웃
 	public void memberLogout(HttpSession session) throws Exception;
 	
-	// 회원정보 보기
+	// 회원정보
 	public MemberDTO memberDetail(String mId) throws Exception;
 
 	// 회원정보 수정

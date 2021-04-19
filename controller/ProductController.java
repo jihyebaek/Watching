@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,7 +52,7 @@ public class ProductController {
 		vo = new SearchVO(total, Integer.parseInt(nowPage), cntPerPage);
 		vo.setSearchType(searchType);
 		vo.setKeyword(keyword);
-		System.out.println(vo);
+		//System.out.println(vo);
 		
 		model.addAttribute("search", vo);
 		model.addAttribute("paging", vo);
@@ -62,7 +63,11 @@ public class ProductController {
 	
 	//업로드 화면 출력, 리스트에서 업로드 버튼을 누르면 나오는 화면
 	@RequestMapping("uploadView")
-	public String uploadView(Model model) throws Exception{
+	public String uploadView(Model model, HttpServletRequest request) throws Exception{
+		
+		HttpSession session = request.getSession();
+		model.addAttribute("aId", session.getAttribute("aId"));
+		
 		return "/admin/uploadView";
 	}
 	
@@ -89,7 +94,7 @@ public class ProductController {
 		//경로
 		
 		String originName = file.getOriginalFilename();
-		System.out.println(originName);
+		//System.out.println(originName);
 		UUID uuid = UUID.randomUUID();
 		//저장 파일 생성
 		String pdata = uuid.toString()+"_"+originName;

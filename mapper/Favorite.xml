@@ -12,6 +12,10 @@
 	<insert id="addfav" parameterType="com.watching.dto.FavoriteDTO">
 		insert into FAVORITE (fCode, pCode, mId) values (FAVORITE_SEQ.nextval, #{pCode}, #{mId}) 
  	</insert>
+ 	
+ 	<select id="favCheck" resultType="int">
+		select count(*) from FAVORITE where pCode=#{pCode}
+	</select>
 	
 	<delete id="deletefav">
 		delete from FAVORITE where fCode=#{fCode}

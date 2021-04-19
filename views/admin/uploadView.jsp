@@ -67,10 +67,11 @@ fieldset{
 	.w100{width:100px;}	
 </style>
 </head>
-	<%@include file="../template/header.jsp"%>
 <body>
+
+<%@include file="../template/adminTop.jsp"%>
 	
-	<c:if test="${aid == null}">
+	<c:if test="${aId == null}">
 		<script>			
 			alert("관리자만 접근할 수 있습니다.");
 			document.location.href="/";
@@ -86,11 +87,11 @@ fieldset{
 		<div class="row">
 			<span class="b_menu">관리자Id</span>
  			<span class="content">
- 				<input type="text" name="aId" size="50" value="${aid}" class="form-control">
+ 				<input type="text" name="aId" size="50" value="${aId}" class="form-control">
  			</span>
 		</div>
 		<div class="row">
-			<span class="b_menu">제목Id</span>
+			<span class="b_menu">제목</span>
  			<span class="content">
  				<input type="text" name="pName" required="required" placeholder="제목" class="form-control">
  			</span>

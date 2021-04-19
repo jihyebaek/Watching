@@ -29,12 +29,20 @@ public class FavoriteServiceImpl implements FavoriteService {
 		fdao.addfav(fdto);
 	}
 
+	// 찜추가 중복체크
+	@Override
+	public int favCheck(int pCode) throws Exception {
+
+		return fdao.favCheck(pCode);
+	}
+	
 	// 찜삭제
 	@Override
 	public void deletefav(int fCode) throws Exception {
 
 		fdao.deletefav(fCode);
 	}
+
 
 
 }
