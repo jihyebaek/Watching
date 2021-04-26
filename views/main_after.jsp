@@ -118,7 +118,7 @@ img {vertical-align: middle;}
 
 	<div id="container">
 	
-		<h4>신작</h4>
+		
 		
 		<div class="slideshow-container">
 	
@@ -169,14 +169,14 @@ img {vertical-align: middle;}
 		<div class="cl_wrapper">
 		
 			<h4>국내 드라마</h4>
-			<ul>
-			<c:forEach items="${dms_dramalist}" var="ddl" varStatus="status">
+				<ul>
+				<c:forEach items="${dms_dramalist}" var="ddl" varStatus="status">
 				<li>
-					<div class="pImg"><a href="/vodplay"><img src="/resources/ProductImg/${ddl.pImg}" style="width:290px; height:200px;"></a></div>
-					<div class="pName"><a href="/vodplay">${ddl.pName}</a></div>
+					<div class="pImg"><a href="/vodplay?pCode=${ddl.pCode}"><img src="/resources/ProductImg/${ddl.pImg}" style="width:290px; height:200px;"></a></div>
+	   				<div class="pName"><a href="/vodplay?pCode=${ddl.pCode}">${ddl.pName}</a></div>
 				</li>
-			</c:forEach>
-			</ul>
+				</c:forEach>
+				</ul>
 			
 						
 			<h4>해외 드라마</h4>

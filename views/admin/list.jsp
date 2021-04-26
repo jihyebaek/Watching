@@ -9,27 +9,27 @@
 <meta charset="UTF-8">
 <title>관리자 모드</title>
 <style>
-body{
+body {
   background-color:black;
   line-height:2em;
   color:#fff;
   margin:30px;
 }
-.list{		
+.list {		
   display:table;
   width:900px;
   margin:auto;
   position: relative;
 }
-.boardDiv{
+.boardDiv {
   width:100%;
 }
-.board{
+.board {
   display:table-row;
   position:relative;
   padding: 0 auto;
 }
-.b_menu{
+.b_menu {
   display:table-cell;
   border-bottom:2px solid silver;
   font-size:14pt;
@@ -38,7 +38,7 @@ body{
   color: #fff;	
   text-align:center;
 }
-.line{
+.line {
   display:table-cell;
   font-size:12pt;
   border-bottom:1px solid silver;
@@ -90,19 +90,26 @@ body{
   border-radius:1px;
 }
 <!--a태그 설정 -->
-a{
-text-decoration:none;
-}
-a:link{
+a {
+  text-decoration:none;
+ }
+a:link {
   text-decoration:none;
   color: #fff;		
 }
-a:visited{
+a:visited {
   text-decoration:none;
   color: #fff;
 }
 a:hover{
   color: #DC143C;
+}
+.d_btn{
+  border:0;
+  height:25px;
+  background-color:#DC143C;
+  border-radius:1px;
+  font-weight:bold;
 }
 	.m5{margin:5px;}
 	.mt10{margin:10px 0 0 0;}
@@ -122,8 +129,7 @@ a:hover{
 	});
 </script>
 <body>
-
-<%@include file="../template/adminTop.jsp"%>
+	<%@include file="../template/adminTop.jsp"%>
 	
 	
 	<c:if test="${aId == null}">
@@ -156,16 +162,7 @@ a:hover{
 			</div>
 		</c:forEach>
 		<div style="display:table-caption; caption-side:bottom;">
-			
-				<style>
-					.d_btn{
-						border:0;
-						height:25px;
-						background-color:#DC143C;
-						border-radius:1px;
-						font-weight:bold;
-					}
-				</style>
+
 				<button type="submit" class="d_btn">삭제</button>
 				<button type="reset" class="d_btn">초기화</button>
 			
@@ -174,12 +171,12 @@ a:hover{
 		</div>
 	</div>
 	</form>
-	
+
 	<div class="paging tc">
 		<c:if test="${paging.startPage != 1}">
 	 		<a href="/admin/list?nowPage=${paging.startPage -1}">&lt;</a>
 	 	</c:if>
-	 	<c:if test="${search.keyword == null }">
+	 	<c:if test="${search.keyword == null}">
 		 	<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
 		 		<c:choose>
 		 			<c:when test="${p == paging.nowPage}">
@@ -191,7 +188,7 @@ a:hover{
 		 		</c:choose>
 		 	</c:forEach>
 	 	</c:if>
-	 	<c:if test="${search.keyword != null }">
+	 	<c:if test="${search.keyword != null}">
 		 	<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
 		 		<c:choose>
 		 			<c:when test="${p == paging.nowPage}">
@@ -207,7 +204,7 @@ a:hover{
 	 		<a href="/admin/list?nowPage=${paging.startPage +1}">&gt;</a>
 	 	</c:if>
 	</div>
-	
+
 	<div class="search tc btn-m10">
 		<select name="searchType" id="searchType" class="search_select">
 			<option value="pName">제목</option>

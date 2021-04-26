@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.watching.dto.ProductDTO;
 import com.watching.service.CategoryService;
+import com.watching.service.ProductService;
 
 @Controller
 @RequestMapping("/")
@@ -19,6 +20,8 @@ public class CategoryController {
 	
 	@Inject
 	CategoryService ctgService;
+	@Inject
+	ProductService pService;
 
 	
 	@RequestMapping("/dms_dramalist")
@@ -53,14 +56,13 @@ public class CategoryController {
 		return "/abr_filmlist";
 	}
 	
-	@RequestMapping("/vodplay")
-	public String vodplay(Model model, ProductDTO pdto) throws Exception {
-		
-		int pCode=pdto.getpCode();
-		
-		
-		return "redirect:/vodplay?pCode="+pCode;
-	}
+	@RequestMapping(value="/vodplay")
+	   public String vodPlay(Model model, @RequestParam("pCode")int pCode) throws Exception {
+	      
+	      
+	      model.addAttribute("view", pService.view(pCode));
+	      return "/vodplay";
+	   }
 	
 	@RequestMapping(value="/listsearch", method=RequestMethod.GET)
 	public void search(Model model, @RequestParam(value="listkeyword", required=false, defaultValue="")String listkeyword) throws Exception {

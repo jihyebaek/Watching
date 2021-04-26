@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,10 +39,6 @@
 	
 	<div id="content">
 	<h1 align="center">Watching 회원가입을 환영합니다!</h1>
-	
-	<p> 아이디 : ${mId} </p>
-	<p> 이름 : ${mName} </p>
-	<p> 멤버십 : ${msName} </p>
 	
 		<div class="btn_area">
 			<button type="submit" id="btnPayment" onclick="location.href='/'">로그인하러 가기</button>

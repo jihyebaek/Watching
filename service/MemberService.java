@@ -32,4 +32,5 @@ public interface MemberService {
 
 	public int idCheck(String mId) throws Exception;
 
+
 }

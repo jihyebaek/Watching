@@ -14,17 +14,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin:0px;
 }
-
 html {
   height: 100%;
 }
-
 .navbar {
   overflow: hidden;
   padding:20px;
   background-color: black;
 }
-
 .menu {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -35,7 +32,6 @@ html {
   padding: 14px 16px;
   text-decoration: none;
 }
-
 .logo {
   margin:10px 10px;
   float: left;
@@ -45,12 +41,10 @@ html {
   padding: 0px;
   text-decoration: none;
 }
-
 .dropdown {
   float: left;
   overflow: hidden;
 }
-
 .dropdown .dropbtn {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -63,11 +57,9 @@ html {
   font-family: inherit;
   margin: 0;
 }
-
 .menu:hover, .dropdown:hover .dropbtn {
   background-color: red;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -76,7 +68,6 @@ html {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-
 .dropdown-content a {
   float: none;
   color: white;
@@ -85,11 +76,9 @@ html {
   display: block;
   text-align: left;
 }
-
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 .rightmenu {
   float:right;
 }
@@ -136,15 +125,17 @@ html {
 		    </c:if>
 				<i class="fa fa-caret-down"></i>
 		    </button>
-		    <div class="dropdown-content">
-		      <a href="/member/detail">회원정보</a>
-		      <a href="/member/logout">로그아웃</a>
-		    </div>
-		    
-		  </div>
-		</div>
-		
-	</div>
+	  
+	  <div class="dropdown-content">
+            <c:if test="${mId != null }"> <a href="/member/detail">회원정보</a> </c:if>
+            <c:if test="${aId != null }"> <a href="/admin/list">관리자모드</a> </c:if>
+            <a href="/member/logout">로그아웃</a>
+          </div>
+          
+        </div>
+      </div>
+      
+   </div>
 
 	
 </body>

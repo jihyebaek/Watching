@@ -49,13 +49,15 @@ public class MemberController {
 	// 회원가입 페이지
 	@RequestMapping("/joinPage")
 	public String memberJoinPage() {
+		
 		return "/member/MemberJoin";
 	} 
 	
 	// 회원가입
 	@RequestMapping("/join") 
 	public String memberJoin(@ModelAttribute MemberDTO dto) throws Exception {
-		 service.memberJoin(dto); 
+		 
+		service.memberJoin(dto); 
 		 
 		 return "redirect:/member/payment"; 
 	} 
@@ -63,6 +65,7 @@ public class MemberController {
 	// 결제 화면
 	@RequestMapping(value = "/payment", method = RequestMethod.GET)
 	public String payment(Locale locale, Model model, HttpServletRequest request) {
+		
 		model.addAttribute("locale", locale);
 		
 		return "/member/payment";
@@ -70,7 +73,8 @@ public class MemberController {
 	
 	// 회원가입 완료  화면
 	@RequestMapping(value = "/join_done", method = RequestMethod.GET)
-	public String join_done(Locale locale, Model model, HttpServletRequest request) {
+	public String joinDone(Locale locale, Model model, HttpServletRequest request) throws Exception {
+		
 		model.addAttribute("locale", locale);
 		
 		return "/member/join_done";
@@ -79,6 +83,7 @@ public class MemberController {
 	// 아이디 중복 검사
 	@RequestMapping("/idCheck")
 	public void idCheck(@RequestParam String mId, HttpServletResponse res) throws Exception {
+		
 		int result = 0;
 		if (service.idCheck(mId) != 0) {
 			result = 1;
@@ -99,9 +104,12 @@ public class MemberController {
 	// 정보 수정 페이지 
 	@RequestMapping("/editPage") 
 	public ModelAndView memberEditPage(@RequestParam String mId) throws Exception { 
+		
 		ModelAndView mav = new ModelAndView(); 
+		
 		mav.setViewName("/member/MemberEdit");
 		mav.addObject("memberEdit", service.memberDetail(mId)); 
+		
 		return mav; 
 	} 
 	

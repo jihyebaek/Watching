@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.watching.common.SearchVO;
 import com.watching.dto.ProductDTO;
-import com.watching.dto.SearchVO;
 
 
 @Repository

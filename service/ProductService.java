@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.watching.common.SearchVO;
 import com.watching.dto.ProductDTO;
-import com.watching.dto.SearchVO;
 
 @Service
 public interface ProductService {

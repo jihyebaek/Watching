@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.watching.common.SearchVO;
 import com.watching.dto.ProductDTO;
-import com.watching.dto.SearchVO;
 import com.watching.service.ProductService;
 
 @Controller
@@ -35,31 +35,37 @@ public class ProductController {
 	//리스트 화면 출력
 	@RequestMapping("list")
 	public String list(Model model, SearchVO vo,
-				@RequestParam(value="nowPage", required=false)String nowPage,
-				@RequestParam(value="searchType", required=false)String searchType,
-				@RequestParam(value="keyword", required=false)String keyword) throws Exception{
+					@RequestParam(value="nowPage", required=false)String nowPage,
+					@RequestParam(value="searchType", required=false)String searchType,
+					@RequestParam(value="keyword", required=false)String keyword,
+					HttpServletRequest request) throws Exception {
+			
 		//페이징
-		int cntPerPage=10;
-		
-		if(nowPage==null) {
-			nowPage="1";
+			int cntPerPage=10;
+			
+			if(nowPage==null) {
+				nowPage="1";
+			}
+			HashMap<String,String> searchMap = new HashMap<String, String>();
+			searchMap.put("searchType", searchType);
+			searchMap.put("keyword", keyword);
+			int total = productService.cntList(searchMap);
+			
+			vo = new SearchVO(total, Integer.parseInt(nowPage), cntPerPage);
+			vo.setSearchType(searchType);
+			vo.setKeyword(keyword);
+			
+			//세션유지
+			HttpSession session = request.getSession();
+			String aId = (String)session.getAttribute("aId");
+			
+			model.addAttribute("search", vo);
+			model.addAttribute("paging", vo);
+			model.addAttribute("dtos", productService.list(vo));
+			model.addAttribute("aId", aId);
+			
+			return "/admin/list";
 		}
-		HashMap<String,String> searchMap = new HashMap<String, String>();
-		searchMap.put("searchType", searchType);
-		searchMap.put("keyword", keyword);
-		int total = productService.cntList(searchMap);
-		
-		vo = new SearchVO(total, Integer.parseInt(nowPage), cntPerPage);
-		vo.setSearchType(searchType);
-		vo.setKeyword(keyword);
-		//System.out.println(vo);
-		
-		model.addAttribute("search", vo);
-		model.addAttribute("paging", vo);
-		model.addAttribute("dtos", productService.list(vo));
-		
-		return "/admin/list";
-	}
 	
 	//업로드 화면 출력, 리스트에서 업로드 버튼을 누르면 나오는 화면
 	@RequestMapping("uploadView")

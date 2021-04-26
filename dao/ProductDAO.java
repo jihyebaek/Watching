@@ -3,8 +3,8 @@ package com.watching.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import com.watching.common.SearchVO;
 import com.watching.dto.ProductDTO;
-import com.watching.dto.SearchVO;
 
 public interface ProductDAO {
 	

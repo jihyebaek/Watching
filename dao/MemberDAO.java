@@ -31,5 +31,4 @@ public interface MemberDAO {
 
 	public int idCheck(String mId) throws Exception;
 
-
 }
